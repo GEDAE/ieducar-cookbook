@@ -1,4 +1,4 @@
-name             'ieducar'
+name             'ieducar_cookbook'
 maintainer       'GEDAE'
 maintainer_email 'rodrigo.devigo@ifms.edu.br'
 license          'apachev2'

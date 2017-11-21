@@ -57,13 +57,13 @@ execute 'Git Config' do
   command 'git config --global url."https://".insteadOf git://'
 end
 
-ieducar_pear 'Instalando Pear Package'
+ieducar_cookbook_pear 'Instalando Pear Package'
 
-ieducar_pgvm 'Instalando PGVM'
+ieducar_cookbook_pgvm 'Instalando PGVM'
 
-ieducar_pg 'Instalando Postgres e instanciando o banco'
+ieducar_cookbook_pg 'Instalando Postgres e instanciando o banco'
 
-ieducar_config 'Configurando o apache'
+ieducar_cookbook_config 'Configurando o apache'
 
 execute 'Adiciona inicializacao do postgres' do
   command 'echo "@reboot $HOME/.pgvm/environments/8.2.23/bin/postgres -D $HOME/.pgvm/clusters/8.2.23/main" > tmp_crontab'

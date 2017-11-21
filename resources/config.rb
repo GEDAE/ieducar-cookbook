@@ -4,6 +4,10 @@ action :create do
   end
 
   execute 'Reload apache 2' do
+    command 'sudo a2enmod rewrite'
+  end
+
+  execute 'Reload apache 2' do
     command 'sudo service apache2 reload'
   end
 
