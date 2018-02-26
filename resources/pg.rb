@@ -10,12 +10,12 @@ action :create do
 
   execute 'Criando o db' do
     user 'ieducar'
-    command '/home/ieducar/.pgvm/environments/8.2.23/bin/createdb ieducar -E latin1 -p 5433'
+    command '/home/ieducar/.pgvm/environments/9.5.11/bin/createdb ieducar -p 5433'
   end
 
   execute 'Restore o db' do
     user 'ieducar'
-    command '/home/ieducar/.pgvm/environments/8.2.23/bin/psql -d ieducar -p 5433 -U ieducar < ieducar.sql'
+    command '/home/ieducar/.pgvm/environments/9.5.11/bin/psql -d ieducar -p 5433 < ieducar.sql'
   end
 
   file 'ieducar.sql' do
@@ -24,6 +24,6 @@ action :create do
 
   execute 'Mudando o search_path' do
     user 'ieducar'
-    command "/home/ieducar/.pgvm/environments/8.2.23/bin/psql -d ieducar -p 5433 -c 'ALTER DATABASE 'ieducar' SET search_path = \"ieducar\", public, portal, cadastro, acesso, alimentos, consistenciacao, historico, pmiacoes, pmicontrolesis, pmidrh, pmieducar, pmiotopic, urbano, modules;'"
+    command "/home/ieducar/.pgvm/environments/9.5.11/bin/psql -d ieducar -p 5433 -c 'ALTER DATABASE 'ieducar' SET search_path = \"ieducar\", public, portal, cadastro, acesso, alimentos, consistenciacao, historico, pmiacoes, pmicontrolesis, pmidrh, pmieducar, pmiotopic, urbano, modules;'"
   end
 end

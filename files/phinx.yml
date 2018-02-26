@@ -11,4 +11,4 @@ environments:
         user: ieducar
         pass: 'ieducar'
         port: 5433
-        charset: latin1
+        charset: utf8

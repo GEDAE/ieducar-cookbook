@@ -20,17 +20,17 @@ user 'ieducar' do
   home '/home/ieducar'
 end
 
-execute 'locale' do
-  command 'sudo echo -e "pt_BR.ISO-8859-1 ISO-8859-1 \nen_US.ISO-8859-1 ISO-8859-1" >> /var/lib/locales/supported.d/local'
-end
+#execute 'locale' do
+#  command 'sudo echo -e "pt_BR.ISO-8859-1 ISO-8859-1 \nen_US.ISO-8859-1 ISO-8859-1" >> /var/lib/locales/supported.d/local'
+#end
 
-execute 'dpkg' do
-  command 'sudo dpkg-reconfigure locales'
-end
+#execute 'dpkg' do
+#  command 'sudo dpkg-reconfigure locales'
+#end
 
-execute 'update-locale' do
-  command 'sudo update-locale LC_ALL=pt_BR.ISO-8859-1 LANG=pt_BR.ISO-8859-1'
-end
+#execute 'update-locale' do
+#  command 'sudo update-locale LC_ALL=pt_BR.ISO-8859-1 LANG=pt_BR.ISO-8859-1'
+#end
 
 #passwd 6AWr2#ach8WedEHu3ReZ
 
@@ -52,6 +52,8 @@ package 'php5-curl'
 package 'php-pear'
 package 'git-core'
 package 'gcc-4.7'
+#package 'php-mbstring'
+#package 'rpl'
 
 execute 'Git Config' do
   command 'git config --global url."https://".insteadOf git://'
@@ -59,14 +61,14 @@ end
 
 ieducar_cookbook_pear 'Instalando Pear Package'
 
-ieducar_cookbook_pgvm 'Instalando PGVM'
+#ieducar_cookbook_pgvm 'Instalando PGVM'
 
-ieducar_cookbook_pg 'Instalando Postgres e instanciando o banco'
+ieducar_cookbook_pg 'Instanciando o banco'
 
 ieducar_cookbook_config 'Configurando o apache'
 
 execute 'Adiciona inicializacao do postgres' do
-  command 'echo "@reboot $HOME/.pgvm/environments/8.2.23/bin/postgres -D $HOME/.pgvm/clusters/8.2.23/main" > tmp_crontab'
+  command 'echo "@reboot $HOME/.pgvm/environments/9.5.11/bin/postgres -D $HOME/.pgvm/clusters/9.5.11/main" > tmp_crontab'
 end
 
 execute 'Atualiza crontab' do

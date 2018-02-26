@@ -1,5 +1,5 @@
 action :create do
-  execute 'Instalando PGVM' do
+  execute 'Baixando PGVM' do
     cwd '/home/ieducar'
     user 'ieducar'
     command 'wget https://raw.github.com/guedes/pgvm/master/bin/pgvm-self-install'
@@ -28,15 +28,15 @@ action :create do
     command 'mkdir -p /home/ieducar/.pgvm/src'
   end
 
-  cookbook_file '/home/ieducar/.pgvm/src/postgresql-8.2.23.tar.gz' do
-    source 'postgresql-8.2.23.tar.gz'
+  cookbook_file '/home/ieducar/.pgvm/src/postgresql-9.5.11.tar.gz' do
+    source 'postgresql-9.5.11.tar.gz'
   end
 
-  cookbook_file '/home/ieducar/.pgvm/src/postgresql-8.2.23.tar.gz.md5' do
-    source 'postgresql-8.2.23.tar.gz.md5'
+  cookbook_file '/home/ieducar/.pgvm/src/postgresql-9.5.11.tar.gz.md5' do
+    source 'postgresql-9.5.11.tar.gz.md5'
   end
 
-  execute 'Instalando Postgres 8.2.23' do
+  execute 'Instalando Postgres 9.5.11' do
     environment ({"pgvm_home" => "/home/ieducar/.pgvm",
       "pgvm_clusters" => "/home/ieducar/.pgvm/clusters",
       "pgvm_logs" => "/home/ieducar/.pgvm/logs",
@@ -45,10 +45,10 @@ action :create do
       "CONFIG_OPTS" => "CC=gcc-4.7",
       "MAKE_OPTS" => "-j4"})
     user 'ieducar'
-    command 'pgvm install 8.2.23'
+    command 'pgvm install 9.5.11'
   end
 
-  execute 'Usando Postgres 8.2.23' do
+  execute 'Usando Postgres 9.5.11' do
     environment ({"pgvm_home" => "/home/ieducar/.pgvm",
       "pgvm_clusters" => "/home/ieducar/.pgvm/clusters",
       "pgvm_logs" => "/home/ieducar/.pgvm/logs",
@@ -57,10 +57,10 @@ action :create do
       "CONFIG_OPTS" => "CC=gcc-4.7",
       "MAKE_OPTS" => "-j4"})
     user 'ieducar'
-    command 'pgvm use 8.2.23'
+    command 'pgvm use 9.5.11'
   end
 
-  execute 'Cliando um cluster Postgres 8.2.23' do
+  execute 'Cliando um cluster Postgres 9.5.11' do
     environment ({"pgvm_home" => "/home/ieducar/.pgvm",
       "pgvm_clusters" => "/home/ieducar/.pgvm/clusters",
       "pgvm_logs" => "/home/ieducar/.pgvm/logs",
@@ -72,7 +72,7 @@ action :create do
     command 'pgvm cluster create main'
   end
 
-  execute 'Cliando um cluster Postgres 8.2.23' do
+  execute 'Cliando um cluster Postgres 9.5.11' do
     environment ({"pgvm_home" => "/home/ieducar/.pgvm",
       "pgvm_clusters" => "/home/ieducar/.pgvm/clusters",
       "pgvm_environments" => "/home/ieducar/.pgvm/environments",

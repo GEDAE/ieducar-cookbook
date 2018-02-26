@@ -31,13 +31,13 @@ action :create do
     mode '0775'
   end
 
-  directory '/home/ieducar/app/shared/vendor' do
+  directory '/home/ieducar/app/shared/ieducar' do
     owner 'ieducar'
     group 'sudo'
     mode '0775'
   end
 
-  directory '/home/ieducar/app/shared/ieducar' do
+  directory '/home/ieducar/app/shared/ieducar/vendor' do
     owner 'ieducar'
     group 'sudo'
     mode '0775'
