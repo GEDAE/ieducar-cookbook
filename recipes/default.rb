@@ -20,18 +20,6 @@ user 'ieducar' do
   home '/home/ieducar'
 end
 
-#execute 'locale' do
-#  command 'sudo echo -e "pt_BR.ISO-8859-1 ISO-8859-1 \nen_US.ISO-8859-1 ISO-8859-1" >> /var/lib/locales/supported.d/local'
-#end
-
-#execute 'dpkg' do
-#  command 'sudo dpkg-reconfigure locales'
-#end
-
-#execute 'update-locale' do
-#  command 'sudo update-locale LC_ALL=pt_BR.ISO-8859-1 LANG=pt_BR.ISO-8859-1'
-#end
-
 #passwd 6AWr2#ach8WedEHu3ReZ
 
 package 'curl'
@@ -60,24 +48,9 @@ execute 'Git Config' do
 end
 
 ieducar_cookbook_pear 'Instalando Pear Package'
+ieducar_cookbook_pgvm 'Instalando Postgres Version Manager'
+ieducar_cookbook_config 'Criando a estrutura de diretórios da aplicação'
 
-#ieducar_cookbook_pgvm 'Instalando PGVM'
-
-ieducar_cookbook_pg 'Instanciando o banco'
-
-ieducar_cookbook_config 'Configurando o apache'
-
-execute 'Adiciona inicializacao do postgres' do
-  command 'echo "@reboot $HOME/.pgvm/environments/9.5.11/bin/postgres -D $HOME/.pgvm/clusters/9.5.11/main" > tmp_crontab'
-end
-
-execute 'Atualiza crontab' do
-  command 'crontab tmp_crontab'
-end
-
-execute 'Remove crontab temporaria' do
-  command 'rm tmp_crontab'
-end
 
 execute 'Restart Apache 2' do
   command 'sudo service apache2 restart'

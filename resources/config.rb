@@ -6,7 +6,7 @@ action :create do
   execute 'Reload apache 2' do
     command 'sudo a2enmod rewrite'
   end
-
+  #
   execute 'Reload apache 2' do
     command 'sudo service apache2 reload'
   end
@@ -49,11 +49,11 @@ action :create do
     mode '0775'
   end
 
-  cookbook_file '/home/ieducar/app/shared/phinx.yml' do
-    source 'phinx.yml'
+  remote_file '/home/ieducar/app/shared/phinx.php' do
+    source 'https://github.com/portabilis/i-educar/blob/master/phinx.php.sample'
   end
 
-  cookbook_file '/home/ieducar/app/shared/ieducar/configuration/ieducar.ini' do
-    source 'ieducar.ini'
+  remote_file '/home/ieducar/app/shared/ieducar/configuration/ieducar.ini' do
+    source 'https://raw.githubusercontent.com/portabilis/i-educar/master/ieducar/configuration/ieducar.ini.sample'
   end
 end

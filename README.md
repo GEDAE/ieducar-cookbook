@@ -1,57 +1,31 @@
-# ieducar Cookbook
+# i-Educar Cookbook
 
-TODO: Enter the cookbook description here.
+Esse Cookbook prevê duas funcionalidades:
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+* Instalar as dependências do projeto i-Educar criando a estrutura de diretório do software.
+* Configura a instância do i-Educar, criando o acesso para uma secretaria e customizando o software.
 
-## Requirements
+## Requisitos
 
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+### Plataformas
 
-e.g.
-### Platforms
-
-- SandwichOS
+- Ubuntu 14.04
 
 ### Chef
 
-- Chef 12.0 or later
+- Chef 12.0 ou maior
 
 ### Cookbooks
 
-- `toaster` - ieducar needs toaster to brown your bagel.
+- `default` - Instala as dependências e prepara a máquina para rodar o software como base de dados local.
+- `instantiate_school` - Configura a instância do i-Educar, usando o Data Bag do Chef Manager.
 
-## Attributes
-
-TODO: List your cookbook attributes here.
-
-e.g.
-### ieducar::default
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['ieducar']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
-## Usage
+## Forma de uso
 
 ### ieducar::default
 
-TODO: Write usage instructions for each cookbook.
 
-e.g.
-Just include `ieducar` in your node's `run_list`:
+Apenas inclua `ieducar` no `run_list` do seu node:
 
 ```json
 {
@@ -62,19 +36,21 @@ Just include `ieducar` in your node's `run_list`:
 }
 ```
 
-## Contributing
+### ieducar::instantiate_school
 
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+* Inclua `ieducar` no `run_list` do seu node:
 
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[ieducar::instantiate_school]"
+  ]
+}
+```
 
-## License and Authors
+* Adicione no Data Bag os dados da nova cidade adicionada ao software.
 
-Authors: TODO: List authors
+## Licença e Autores
 
+Autores: Rodrigo Sanches Devigo e Leandro Oliveira Magalhães
